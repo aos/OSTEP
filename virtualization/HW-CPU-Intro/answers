@@ -1,0 +1,24 @@
+1. CPU utilization: 
+(./process-run.py -l 5:100,5:100)
+- CPU should be running 100% of the time. We know this because each process runs 5 instructions, when one completes, the other follows.
+
+2. (./process-run.py -l 4:100,1:0)
+- The first process only issues 4 instructions, so total time is 4 cycles. Then, an IO process is issued once: 1 CPU process then wait for 4 cycles (default). Total time to complete both: 10 cycles (9 + 1 DONE).
+
+3. (./process-run.py -l 1:0,4:100)
+- The first process will issue an IO command, then wait 4 seconds, since it becomes blocked, the other CPU will start immediately after. Thus, total time should be 6 cycles. Switching the order matters because now the second process will run while the first process is blocked.  
+
+4. (./process-run.py -l 1:0,4:100 -c -S SWITCH_ON_END)
+- This essentially only allows the CPU to switch to the next process when the IO command is done. Which means that it will take a total of9 cycles. 1 RUN, 4 IO WAITING, 4 RUN
+
+5. (./process-run.py -l 1:0,4:100 -c -S SWITCH_ON_IO)
+- This allows the second process to take over when the first process switches to IO
+
+6. (./process-run.py -l 3:0,5:100,5:100,5:100 -S SWITCH_ON_IO -I IO_RUN_LATER)
+- In this combination, the first IO issues a command, gets blocked, then because we are switching on IO, the next 3 RUN processes run, then the last 2 IO processes are run. This is not an effective utilization of resources. 
+
+7. (Same as last, but with -I IO_RUN_IMMEDIATE)
+- This differs because now it allows each IO process to be DONE, effectively allowing each RUN command to take up all cycles while the IO is blocked.
+
+(Run with randomly generated process: -s 1 -l3:50,3:50, -s 2 -l 3:50,3:50, -s 3 -l 3:50,3:50)
+- IO_RUN_IMMEDIATE: This allows for effective utilization of CPU cycles as the next IO cycle will start when ready. SWITCH_ON_IO also allows for effective utilization of CPU cycles as once the IO instruction is issued and the process is blocked, the next process can issue its instructions immediately.
