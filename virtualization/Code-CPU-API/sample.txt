@@ -1,0 +1,10 @@
+Hello hello aos aos bye bye hello hello yes no why why bye bye hello aos hello
+
+Why yes hello bye this is the new file
+
+To count occurrence of certain words in this file:
+
+grep -o hello sample.txt | wc -l
+
+-o Prints out matching text as lines
+-l Counts lines
