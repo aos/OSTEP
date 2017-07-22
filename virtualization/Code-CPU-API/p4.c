@@ -19,7 +19,7 @@ main(int argc, char *argv[])
 	open("./p4.output", O_CREAT|O_WRONLY|O_TRUNC, S_IRWXU);
 
 	// now exec "wc"...
-        char *myargs[3];
+       char *myargs[3];
         myargs[0] = strdup("wc");   // program: "wc" (word count)
         myargs[1] = strdup("p4.c"); // argument: file to count
         myargs[2] = NULL;           // marks end of array
