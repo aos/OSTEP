@@ -1,0 +1,35 @@
+1. FIFO scheduling (length = 200)
+Job         Response Time           Turnaround
+0           0                       200
+1           200                     400
+2           400                     600
+
+- SJF scheduling
+0           0                       200
+1           200                     400
+2           400                     600
+
+2. (length = 100, 200, 300)
+- FIFO scheduling
+0           0                       100
+1           100                     300
+2           300                     600
+
+- SJF scheduling
+0           0                       100
+1           100                     300
+2           300                     600
+
+3. Round-robin (length = 100,200,300, time-slice=1)
+0           0                       300
+1           1                       500
+3           2                       600
+
+4. SJF = FIFO?
+- When all the jobs have the same length, or when all the jobs have different lengths but they all come ordered shortest to longest.
+
+5. When the job length is equal to the quantum length, SJF and RR deliver the same response times.
+
+6. Response time increases proportionally to job length.
+
+7. Worst-case response time, given N jobs = 2N

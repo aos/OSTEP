@@ -1,0 +1,30 @@
+1. (-j 2 -n 2 -m 15 -M 0)
+[time 00] JOB BEGINS by JOB 0
+[time 00] JOB BEGINS by JOB 1
+[time 00] Run JOB 0 at PRIORITY 1 [Ticks left: 9, RUNTIME: 12, TIMELEFT: 11]
+[time 01] Run JOB 0 at PRIORITY 1 [Ticks left: 8, RUNTIME: 12, TIMELEFT: 10]
+[time 02] Run JOB 0 at PRIORITY 1 [Ticks left: 7, RUNTIME: 12, TIMELEFT: 09]
+[time 03] Run JOB 0 at PRIORITY 1 [Ticks left: 6, RUNTIME: 12, TIMELEFT: 08]
+[time 04] Run JOB 0 at PRIORITY 1 [Ticks left: 5, RUNTIME: 12, TIMELEFT: 07]
+[time 05] Run JOB 0 at PRIORITY 1 [Ticks left: 4, RUNTIME: 12, TIMELEFT: 06]
+[time 06] Run JOB 0 at PRIORITY 1 [Ticks left: 3, RUNTIME: 12, TIMELEFT: 05]
+[time 07] Run JOB 0 at PRIORITY 1 [Ticks left: 2, RUNTIME: 12, TIMELEFT: 04]
+[time 08] Run JOB 0 at PRIORITY 1 [Ticks left: 1, RUNTIME: 12, TIMELEFT: 03]
+[time 09] Run JOB 0 at PRIORITY 1 [Ticks left: 0, RUNTIME: 12, TIMELEFT: 02]
+[time 10] Run JOB 0 at PRIORITY 1 [Ticks left: 0, RUNTIME: 12, TIMELEFT: 01]
+[time 11] Run JOB 1 at PRIORITY 1 [Ticks left: 9, RUNTIME: 6, TIMELEFT: 05]
+[time 12] Run JOB 1 at PRIORITY 1 [Ticks left: 8, RUNTIME: 6, TIMELEFT: 04]
+[time 13] Run JOB 1 at PRIORITY 1 [Ticks left: 7, RUNTIME: 6, TIMELEFT: 03]
+[time 14] Run JOB 1 at PRIORITY 1 [Ticks left: 6, RUNTIME: 6, TIMELEFT: 02]
+[time 15] Run JOB 1 at PRIORITY 1 [Ticks left: 5, RUNTIME: 6, TIMELEFT: 01]
+[time 16] Run JOB 1 at PRIORITY 1 [Ticks left: 4, RUNTIME: 6, TIMELEFT: 00]
+[time 17] Run JOB 0 at PRIORITY 0 [Ticks left: 9, RUNTIME: 12, TIMELEFT: 00]
+
+2.
+- Ex 8.4: (-l 0,1,2:1,10,0)
+
+3. Set the number of queues to only 1, as there is no priority levels in round-robin scheduler
+
+4. -q 10 -l 0,100,9:0100,0 -S
+
+5. Given a 100 ms length for jobs, at least once every 20 ms is enough.
