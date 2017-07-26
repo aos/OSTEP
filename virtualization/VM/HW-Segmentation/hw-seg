@@ -1,0 +1,21 @@
+1. 
+* Seg 0: 0 - 20
+* Seg 1: 128 - 108
+* VA0 - PA 492
+* VA1 - seg fault
+* VA2 - seg fault
+* VA3 - seg fault
+* VA4 - seg fault
+
+* Seg 0: 0 - 20
+* Seg 1: 128 - 108
+* VA0 - PA 17
+* VA1 - PA 492
+* VA2 - seg fault
+* VA3 - seg fault
+* VA4 - seg fault
+
+2. Hi legal VA seg 0: 19
+Low legal VA seg 1: 108
+Low illegal: 20
+High illegal: 107
