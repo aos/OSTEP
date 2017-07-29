@@ -1,0 +1,18 @@
+1. Alloc(3)
+- returned 3
+Free list [Size 1]: [address 3]
+
+- freed:
+Free list [Size 2]: [address 0, size: 3] [address 3]
+
+Alloc(5)
+- returned 5, (addr: 3)
+Free list [Size 2]: [addr: 0, sz: 3] [addr: 8]
+
+- freed: 
+Free list [Size 3]: [addr: 0, sz: 3] [addr: 3, sz: 5] [addr: 8]
+
+2. Worst fit further fragments memory
+
+3. First fit speeds up the search, not to search the entire list
+

@@ -1,0 +1,21 @@
+1.
+* As address space grows:
+-P 1k -a 1m -p 512m -v -n 0
+-P 1k -a 2m -p 512m -v -n 0
+-P 1k -a 4m -p 512m -v -n 0
+
+As address space grows, more page table entries are required to fit entirety of address space.
+
+* As page size grows:
+-P 1k -a 1m -p 512m -v -n 0
+-P 2k -a 1m -p 512m -v -n 0
+-P 4k -a 1m -p 512m -v -n 0
+
+As page size grows, less page table entries are required to fit entirety of address address space.
+
+2. -P 1k -a 16k -p 32k -v -u 25
+VA decimal: 0x3986, binary: 1110 - 01 1000 0110
+How many bits do we need? (16k address space / 1k page size = 16 pages)
+16k requires 14 bits, 16 pages requires 4 bits, left with 8 for PFN
+VPN = 14 
+Invalid (VPN 3 is not valid)
