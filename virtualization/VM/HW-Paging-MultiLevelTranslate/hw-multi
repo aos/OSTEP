@@ -1,0 +1,15 @@
+1. VA 0x611c (0110 0001 0001 1100)
+
+VPN 10 offset 5
+
+11000 01000 11100 
+
+[PDE index: 11000 (dec: 24)] - PDE 0xA1 (1010 0001) 
+1 0100001 -> VALID: (1 + 32): 33 
+
+[PTE index: 01000 (dec: 8)] - PTE 0xb5 (1011 0101) 
+1 0110101 -> VALID: (1 + 4 + 16 + 32): page 53 
+
+Offset: 11100 (dec: 28): Data: 0x08
+
+Physical address: 0110 1011 1100 or 0x6BC

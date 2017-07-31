@@ -1,0 +1,19 @@
+1. -s 0 -n 10
+
+FIFO, cache 3, 10 pages
+8 -> MISS -> 8--
+7 -> MISS -> 87-
+4 -> MISS -> 874
+2 -> MISS -> 742
+5 -> MISS -> 425
+4 -> HIT -> 425
+7 -> MISS -> 257
+3 -> MISS
+
+LRU, cache 3, 10 pages
+8 -> MISS -> 8--
+7 -> MISS -> 87-
+4 -> MISS -> 874
+2 -> MISS -> 742
+5 -> MISS -> 425
+4 -> HIT -> 254
