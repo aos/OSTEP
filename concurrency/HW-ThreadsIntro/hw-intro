@@ -1,0 +1,1 @@
+1. There are no race conditions in this code. Each thread is run to completion. In this example, 'd' is -1 at the end of both threads
