@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include <pthread.h>
 
 #define MAXSIZE (1013)
@@ -25,6 +26,9 @@ typedef struct _node {
   struct _node *next;
 } node;
 
+// Hash table
+node *hashtable[MAXSIZE];
+
 // Create a new list
 node* create(char *string) {
   // Malloc new node
@@ -40,7 +44,7 @@ node* create(char *string) {
   return new_node;
 }
 
-void insert(node **table, char *value) {
+void insert(char *value) {
 
   // Create new node
   node *new_node = create(value);
@@ -48,25 +52,40 @@ void insert(node **table, char *value) {
   size_t index = hash(value);
 
   // Insert into hash table
-  if (table[index] == NULL) {
-    table[index] = new_node; 
-  } 
-  else {
-    new_node->next = table[index]; // *(table + index)
-    table[index] = new_node;
-  }
+  new_node->next = hashtable[index]; // *(table + index)
+  hashtable[index] = new_node;
 }
 
-void *worker(void *table, void *value) {
-  insert(table, value);
+void *worker(void *value) {
+  insert(value);
 
   return NULL;
+}
+
+bool find(const char *check) {
+
+  // Get hash key for word
+  size_t index = hash(check);
+
+  // Store value of node at hashtable[index] (if exists)
+  node *checker = hashtable[index];
+
+  while (checker) {
+
+    if (strcasecmp(check, checker->value) == 0) {
+      // Found value
+      return true;
+    }
+    checker->next = checker;
+
+  }
+  // Did not find value
+  return false;
 }
 
 int
 main(int argc, char *argv[])
 {
-  node *hashtable[MAXSIZE];
   char *aos[2]; 
 
   aos[0] = "Hi there!";
