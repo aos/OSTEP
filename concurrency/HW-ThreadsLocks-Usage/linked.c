@@ -26,7 +26,6 @@ int List_Insert(list_t *L, int key) {
 
     if (new == NULL) {
         perror("malloc");
-        pthread_mutex_unlock(&L->lock);
         return -1; // fail
     }
 
