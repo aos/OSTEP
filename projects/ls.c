@@ -1,8 +1,13 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <dirent.h>
 #include <assert.h>
 #include <sys/stat.h>
+#include <unistd.h>
 #include <string.h>
+#include <sys/param.h>
+#include <limits.h>
+#include <fcntl.h>
 
 /*
    struct dirent {
@@ -17,20 +22,33 @@
 int
 main(int argc, char *argv[])
 {
-  DIR *dp = opendir(".");
-  assert(dp != NULL);
+  DIR *dp; 
+
+  if (argc == 3) {
+    dp = opendir(argv[2]);
+    assert(dp != NULL);
+  }
+  else {
+    dp = opendir(".");
+    assert(dp != NULL);
+  }
 
   struct dirent *d;
-  struct stat buf;
 
   while ((d = readdir(dp)) != NULL) {
 
-    if (argc == 2 && (strcmp(argv[1], "l") == 0)) {
-      int fd = dirfd(dp);
-      assert(fd != -1);
+    struct stat stat_buf;
 
-      fstat(fd, &buf);
-      printf("UID: %lu, size: %lu, name: %s\n", (unsigned long) buf.st_uid, (unsigned long) buf.st_size, d->d_name);
+    if (argc >= 2 && (strcmp(argv[1], "l") == 0)) {
+
+      int fd = openat(dirfd(dp), d->d_name, O_RDONLY);
+
+      assert(fd >= 0);
+
+      fstat(fd, &stat_buf);
+      printf("UID: %u, size: %llu, name: %s\n", stat_buf.st_uid, stat_buf.st_size, d->d_name);
+
+      close(fd);
     }
     else {
       printf("%lu %s\n", (unsigned long) d->d_ino, d->d_name);
