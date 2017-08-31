@@ -19,6 +19,16 @@
    }
 */
 
+/* 
+   struct stat {
+    ...
+    ino_t           st_ino; // inode number
+    uid_t           st_uid; // user-id of owner
+    off_t           st_size; // file size, in bytes
+    ...
+   }
+*/
+
 int
 main(int argc, char *argv[])
 {
@@ -39,11 +49,11 @@ main(int argc, char *argv[])
 
     struct stat stat_buf;
 
-    if (argc >= 2 && (strcmp(argv[1], "l") == 0)) {
+    if (argc >= 2 && (strcmp(argv[1], "-l") == 0)) {
 
       int fd = openat(dirfd(dp), d->d_name, O_RDONLY);
 
-      assert(fd >= 0);
+      // assert(fd >= 0)
 
       fstat(fd, &stat_buf);
       printf("UID: %u, size: %llu, name: %s\n", stat_buf.st_uid, stat_buf.st_size, d->d_name);
