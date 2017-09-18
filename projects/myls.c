@@ -1,3 +1,7 @@
+/**
+ * Simple implementation of `ls`
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <dirent.h>
@@ -53,7 +57,7 @@ main(int argc, char *argv[])
 
       int fd = openat(dirfd(dp), d->d_name, O_RDONLY);
 
-      // assert(fd >= 0)
+      assert(fd >= 0);
 
       fstat(fd, &stat_buf);
       printf("UID: %u, size: %llu, name: %s\n", stat_buf.st_uid, stat_buf.st_size, d->d_name);
